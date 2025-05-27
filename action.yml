@@ -197,14 +197,20 @@ runs:
         endpoint: buildx-context
         buildkitd-flags: "${{ inputs.debug == 'true' && '--debug' || '' }} ${{ inputs.buildkitd-flags }}" 
         driver-opts: "${{ inputs.driver-opts }}"
-
-    - name: Login
-      uses: docker/login-action@v3
-      if: ${{ contains(inputs.registry, '.amazonaws.com') || ( inputs.login != '' && inputs.password != '' ) }}
+        
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v1
       with:
-        registry: ${{ inputs.registry }}
-        username: ${{ inputs.login }}
-        password: ${{ inputs.password }}
+          token_format: access_token
+          workload_identity_provider: <workload_identity_provider>
+          service_account: <service_account>
+
+    - name: Login to GAR
+      uses: docker/login-action@v3
+      with:
+          registry: us-east1-docker.pkg.dev
+          username: oauth2accesstoken
+          password: ${{ steps.auth.outputs.access_token }}
 
     - name: Build and push Docker images
       # Do not update to >=v6 untill the issue would be solved
