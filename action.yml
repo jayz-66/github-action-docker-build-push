@@ -201,7 +201,6 @@ runs:
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v2
       with:
-          token_format: access_token
           project_id: 'cch-plat-gbl-dev-66823cea' 
           workload_identity_provider: 'projects/658238617591/locations/global/workloadIdentityPools/cch-cicd-test/providers/github'
 
