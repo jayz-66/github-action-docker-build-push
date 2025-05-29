@@ -202,8 +202,8 @@ runs:
       uses: google-github-actions/auth@v1
       with:
           token_format: access_token
-          workload_identity_provider: <workload_identity_provider>
-          service_account: <service_account>
+          project_id: 'cch-plat-gbl-dev-66823cea' 
+          workload_identity_provider: 'projects/658238617591/locations/global/workloadIdentityPools/cch-cicd-test/providers/github'
 
     - name: Login to GAR
       uses: docker/login-action@v3
