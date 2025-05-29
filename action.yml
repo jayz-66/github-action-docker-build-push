@@ -199,7 +199,7 @@ runs:
         driver-opts: "${{ inputs.driver-opts }}"
         
     - name: Authenticate to Google Cloud
-      uses: google-github-actions/auth@v1
+      uses: google-github-actions/auth@v2
       with:
           token_format: access_token
           project_id: 'cch-plat-gbl-dev-66823cea' 
