@@ -200,11 +200,12 @@ runs:
       with:
         endpoint: buildx-context
         buildkitd-flags: "${{ inputs.debug == 'true' && '--debug' || '' }} ${{ inputs.buildkitd-flags }}" 
-    
-    - name: Authenticate Docker to Artifact Registry
+
+    - name: 'Set up Cloud SDK'
       uses: 'google-github-actions/setup-gcloud@v2'
-      run: |
-        gcloud auth configure-docker us-east4-docker.pkg.dev   
+    
+    # - name: Authenticate Docker to Artifact Registry
+    #   run: gcloud auth configure-docker us-east4-docker.pkg.dev   
 
     - name: Build and push Docker images
       # Do not update to >=v6 untill the issue would be solved
