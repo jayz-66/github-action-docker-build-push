@@ -158,6 +158,10 @@ runs:
           ${{ inputs.tags }}
         labels: |
           org.opencontainers.image.source=https://github.com/${{ inputs.organization }}/${{ inputs.repository }}
+    
+    - name: ECHO IMAGE NAME
+      shell: bash
+      run: echo "Image name is ${{ inputs.registry }}/${{ steps.image_name.outputs.image_name }}" 
 
     - name: 'Install jq 1.6'
       uses: dcarbone/install-jq-action@v3.0.1
