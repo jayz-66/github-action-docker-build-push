@@ -160,9 +160,8 @@ runs:
         labels: |
           org.opencontainers.image.source=https://github.com/${{ inputs.organization }}/${{ inputs.repository }}
     
-    - name: ECHO IMAGE NAME
-      shell: bash
-      run: echo "Image name is ${{ inputs.registry }}/${{ steps.image_name.outputs.image_name }}" 
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v2'
 
     - name: 'Install jq 1.6'
       uses: dcarbone/install-jq-action@v3.0.1
@@ -203,6 +202,7 @@ runs:
         buildkitd-flags: "${{ inputs.debug == 'true' && '--debug' || '' }} ${{ inputs.buildkitd-flags }}" 
     
     - name: Authenticate Docker to Artifact Registry
+      uses: 'google-github-actions/setup-gcloud@v2'
       run: |
         gcloud auth configure-docker us-east4-docker.pkg.dev   
 
