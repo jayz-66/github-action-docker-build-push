@@ -205,7 +205,7 @@ runs:
     - name: Listing current directory files
       shell: bash
       run: |
-        echo "Current directory files: ls -a"
+        echo "Current directory files: ${{ ls -a }}"
         
 
     - name: Build and push Docker images
