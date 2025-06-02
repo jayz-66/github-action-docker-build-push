@@ -143,6 +143,7 @@ runs:
         # list of Docker images to use as base name for tags
         images: |
           ${{ inputs.registry }}/${{ steps.image_name.outputs.image_name }}
+
         # generate Docker tags based on the following events/attributes
         # we set sha as higher priority than the defaults, so that it is the first tag
         tags: |
@@ -200,7 +201,11 @@ runs:
       with:
         endpoint: buildx-context
         buildkitd-flags: "${{ inputs.debug == 'true' && '--debug' || '' }} ${{ inputs.buildkitd-flags }}" 
-        # driver-opts: "${{ inputs.driver-opts }}"
+    
+    - name: Listing current directory files
+      shell: bash
+      run: |
+        echo "Current directory files: ls -a"
         
 
     - name: Build and push Docker images
