@@ -203,7 +203,6 @@ runs:
         buildkitd-flags: "${{ inputs.debug == 'true' && '--debug' || '' }} ${{ inputs.buildkitd-flags }}" 
     
     - name: Authenticate Docker to Artifact Registry
-      shell: bash 
       run: |
         gcloud auth configure-docker us-east4-docker.pkg.dev   
 
