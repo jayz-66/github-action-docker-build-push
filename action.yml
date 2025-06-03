@@ -203,6 +203,8 @@ runs:
 
     - name: 'Set up Cloud SDK'
       uses: 'google-github-actions/setup-gcloud@v2'
+      with:
+          service_account: arc-sa@cch-plat-glb-dev-project-4.iam.gserviceaccount.com
     
     - name: 'Authenticate Docker Registry'
       shell: bash
