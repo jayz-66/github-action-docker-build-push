@@ -205,7 +205,7 @@ runs:
       uses: 'google-github-actions/setup-gcloud@v2'
     
     - name: Authenticate Docker to Artifact Registry
-      shell: bash
+      uses: 'google-github-actions/setup-gcloud@v2'
       run: | 
         gcloud auth configure-docker us-east4-docker.pkg.dev 
         gcloud artifacts repositories list   
