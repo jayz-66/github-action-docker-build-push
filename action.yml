@@ -208,6 +208,8 @@ runs:
       shell: bash
       run: |
         gcloud auth list
+        gcloud auth configure-docker us-east4-docker.pkg.dev 
+        gcloud artifacts repositories list
 
     - name: Build and push Docker images
       # Do not update to >=v6 untill the issue would be solved
