@@ -204,10 +204,10 @@ runs:
     - name: 'Set up Cloud SDK'
       uses: 'google-github-actions/setup-gcloud@v2'
     
-    - name: Authenticate Docker to Artifact Registry
+    - name: 'Authenticate Docker Registry'
+      shell: bash
       run: |
-        gcloud auth configure-docker us-east4-docker.pkg.dev 
-        gcloud artifacts repositories list  
+        gcloud auth list
 
     - name: Build and push Docker images
       # Do not update to >=v6 untill the issue would be solved
