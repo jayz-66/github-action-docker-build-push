@@ -207,7 +207,8 @@ runs:
     - name: 'Authenticate Docker Registry'
       shell: bash
       run: |
-        gcloud auth list
+        gcloud auth 
+        gcloud auth activate-service-account 'arc-sa@cch-plat-glb-dev-project-4.iam.gserviceaccount.com'
         gcloud config set account 'arc-sa@cch-plat-glb-dev-project-4.iam.gserviceaccount.com'
         gcloud auth configure-docker us-east4-docker.pkg.dev 
         gcloud artifacts repositories list
