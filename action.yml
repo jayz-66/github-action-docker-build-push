@@ -207,7 +207,6 @@ runs:
     - name: Authenticate Docker to Artifact Registry
       shell: bash
       run: | 
-        gcloud iam service-accounts list
         gcloud auth configure-docker us-east4-docker.pkg.dev 
         gcloud artifacts repositories list   
 
