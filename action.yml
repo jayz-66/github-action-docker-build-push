@@ -190,11 +190,13 @@ runs:
       run: |
         docker context create buildx-context || true
 
-    - name: Set up QEMU
+    - name: Install binfmt support
       uses: docker/setup-qemu-action@v3
       with:
-        image: ${{ inputs.binfmt-image }}
-        pull: true
+       image: tonistiigi/binfmt:latest
+       platforms: all
+    # disable cache usage
+       install: true
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
