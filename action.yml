@@ -190,10 +190,10 @@ runs:
       run: |
         docker context create buildx-context || true
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v1
-      with:
-        image: ${{ inputs.binfmt-image }}
+    # - name: Set up QEMU
+    #   uses: docker/setup-qemu-action@v1
+    #   with:
+    #     image: ${{ inputs.binfmt-image }}
             
 
     - name: Set up Docker Buildx
